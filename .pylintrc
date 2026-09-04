@@ -1,0 +1,11 @@
+[MAIN]
+fail-under=9.0
+
+[MESSAGES CONTROL]
+disable=
+    too-many-instance-attributes,
+    too-many-arguments,
+    too-many-positional-arguments,
+    too-many-branches,
+    too-many-locals,
+    too-few-public-methods,
