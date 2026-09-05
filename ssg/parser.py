@@ -54,10 +54,7 @@ class ParsedFragment:
         print(result.stderr, file=sys.stderr, end="")
 
         if result.returncode != 0:
-            print(
-                f"Pandoc failed.",
-                file=sys.stderr,
-            )
+            print("Pandoc failed.", file=sys.stderr)
             output = f"<code><pre>{html.escape(result.stderr, True)}<pre></code>"
         else:
             output = result.stdout
@@ -73,10 +70,8 @@ class ParsedFragment:
         return "", source
 
     def _extract_itemprops(self, root_element: ET.Element) -> dict:
-        prop_name = root_element.get("itemprop")
-        is_scope = root_element.get("itemscope")
-
-        if is_scope:
+        _ = root_element.get("itemprop")
+        if root_element.get("itemscope") is not None:
             pass
 
         print("TODO: itemprop extraction", file=sys.stderr)
