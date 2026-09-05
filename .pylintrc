@@ -1,0 +1,14 @@
+[MASTER]
+ignore-patterns=
+
+[MESSAGES CONTROL]
+disable=
+    too-few-public-methods,
+    too-many-arguments,
+    too-many-branches,
+    too-many-instance-attributes,
+    too-many-locals,
+    too-many-positional-arguments
+
+[FORMAT]
+max-line-length=120
