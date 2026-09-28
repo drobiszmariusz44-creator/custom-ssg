@@ -160,7 +160,7 @@ class Document:
         if lang is None:
             print("Warning: unset language. Quotes will be left alone.")
 
-        def filter(text: str) -> str:
+        def apply_ligature_rules(text: str) -> str:
             return (
                 text.replace("---", "\u2014")
                 .replace("--", "\u2013")
@@ -173,17 +173,17 @@ class Document:
             if lang is None or (not tail and element.tag in Document.RAW_ELEMENTS):
                 return text, inside_quotes
             result = ""
-            for i, c in enumerate(text):
-                if c == '"':
+            for char in text:
+                if char == '"':
                     result += Document.QUOTES[lang][1 if inside_quotes else 0]
                     inside_quotes = not inside_quotes
                 else:
-                    result += c
+                    result += char
             return result, inside_quotes
 
         if element.text is not None and element.tag not in Document.RAW_ELEMENTS:
             element.text, inside_quotes = resolve_quotes(
-                filter(element.text), inside_quotes
+                apply_ligature_rules(element.text), inside_quotes
             )
 
         for child in element.findall("./*"):
@@ -191,5 +191,5 @@ class Document:
 
         if element.tail is not None:
             element.tail, inside_quotes = resolve_quotes(
-                filter(element.tail), inside_quotes, tail=True
+                apply_ligature_rules(element.tail), inside_quotes, tail=True
             )

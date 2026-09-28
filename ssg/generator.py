@@ -1,7 +1,6 @@
 """The generator logic."""
 
 import configparser
-import copy
 import os
 import sys
 import xml.etree.ElementTree as ET
@@ -144,7 +143,8 @@ class Generator:
 
             if title is None:
                 print(
-                    "Warning: No title found. You should add a level 1 heading or title metadata key.",
+                    "Warning: No title found. "
+                    "You should add a level 1 heading or title metadata key.",
                     file=sys.stderr,
                 )
                 title = ""
