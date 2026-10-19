@@ -1,4 +1,4 @@
-copilot/fix-github-actions-job-failure# My custom Static Site Generator
+# My custom Static Site Generator
 
 This project contains the command line utility I use to generate my personal
 blog.
